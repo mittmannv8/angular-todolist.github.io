@@ -1,0 +1,198 @@
+* { padding: 0; margin: 0; box-sizing: border-box;}
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #333;
+    color: #cfcfcf;
+}
+body {
+    /* display: flex; */
+    /* flex-direction: row; */
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+/* components */
+.input {
+    flex: 1;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
+    border-bottom: 2px solid #da3a3a;
+    background-color: #444;
+    outline-style: none;
+    color: #ddd;
+}
+.button {
+    margin-left: 5px;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background-color: #444;
+    color: #efefef;
+    border: 2px solid #da3a3a;
+}
+
+/* lists */
+.lists {
+    min-height: 100%;
+    max-height: 100%;
+    width: 33%;
+}
+
+.lists h4 {
+    padding: 20px;
+}
+
+.lists ul {
+    max-height: 86%;
+    flex: 1;
+    overflow-y: scroll;
+}
+
+.lists ul li div.item {
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lists li:last-child {
+    margin-bottom: 10px;
+}
+
+.lists li:hover {
+    background-color: #555;
+}
+
+.lists li, .lists li div.item {
+    cursor: pointer;
+}
+
+.lists li div.active {
+    color: white;
+    font-weight: bold;
+    background-color: #444;
+}
+.lists li div.name {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.lists li span:focus {
+    outline-style: none;
+}
+
+.lists li span.edit {
+    color: #333;
+    background-color: white;
+    min-width: 20px;
+    display: 'block';
+}
+
+.lists li span.todoCounter {
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+.lists .listForm {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.counter {
+    height: 10px;
+    flex: 1;
+    background-color: #222;
+    margin-left: 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.counter .done {
+    position: absolute;
+    height: 10px;
+    flex: 1;
+    background-color: #da3a3a;
+    position: relative;
+    border-radius: 10px;
+    transition: width 1s;
+}
+
+/* todolist */
+.todolist {
+    background-color: #444;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.todolist h2 {
+    padding: 5px 0;
+    margin-bottom: 30px;
+}
+
+.todolist .todoForm {
+    display: flex;
+    flex-direction: row;
+}
+
+.todolist .todoForm .button {
+    width: 100px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.todolist ul {
+    flex: 1;
+    flex-shrink: 1;
+    overflow-y: scroll;
+}
+
+.todolist ul li {
+    min-width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}
+.todolist ul li:hover {
+    font-weight: bold;
+    background-color: #333;
+}
+
+.todolist ul li label {
+    width: 100%;
+    padding: 7px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.todolist ul li.checked {
+    text-decoration: line-through;
+    opacity: 0.7;;
+}
+.todolist ul li input[type="checkbox"] {
+    display: none;
+}
+
+.todolist ul li i {
+    opacity: 0.2;
+}
+.todolist ul li.checked i {
+    opacity: 1;
+}

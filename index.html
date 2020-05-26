@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todoApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Document</title>
+    <link rel="stylesheet" href="/lib/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
+    <script src="/lib/script.js"></script>
+</head>
+
+<body tabindex="0" ng-controller="todoController as todo">
+
+    <div class="content">
+
+        <aside class="lists">
+            <h4>Lists</h4>
+            <div class="listForm">
+                <input class="input" ng-keydown="$event.keyCode === 13 && addTodoList(form)" type="text" ng-model="form.newTodoList" placeholder="List name" />
+                <button class="button" ng-click="addTodoList(form)"><i class="material-icons">add</i></button>
+            </div>
+            <ul>
+                <li ng-repeat="list in lists">
+                    <div
+                        class="item"
+                        ng-class="{active: list.active}"
+                        ng-click="selectTodo(list.name)">
+                        <div class="name">
+                            <span
+                                tabindex="1"
+                                ng-focus="list.editMode"
+                                ng-blur="confirmEditTodoListName(list)"
+                                ng-class="{edit: list.editMode}"
+                                ng-keydown="changeTodoListName($event, list)"
+                                ng-dblclick="editTodoListName(list)">
+                                {{ list.name }}
+                            </span>
+                            <span class="todoCounter">({{ todoListCount(list) }} items)</span>
+                        </div>
+                        <div class="counter">
+                            <div ng-style="{width: counter(list)}" class="done"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </aside>
+
+        <section class="todolist">
+            <h2>{{ selectedTodo.name }}</h2>
+
+            <div class="todoForm">
+                <input class="input" ng-keydown="$event.keyCode === 13 && addTodoItem(newTodoItem)" type="text" ng-model="newTodoItem" placeholder="New item" />
+                <button class="button" ng-click="addTodoItem(newTodoItem)">Add item</button>
+            </div>
+            
+            <ul>
+                <li ng-repeat="todo in selectedTodo.items" ng-class="{checked: todo.checked}">
+                    <input type="checkbox" id="{{ todo.text }}" ng-model="todo.checked">
+                    <i class="material-icons">done</i>
+                    <label for="{{ todo.text }}">{{ todo.text }}</label>
+                </li>
+            </ul>
+
+        </section>
+    </div>
+</body>
+</html>
